@@ -1,0 +1,11 @@
+﻿  main.cpp
+G:\Windows_POC\ViolentSoftware\Not_TSK\TrueSightKiller\main.cpp(85,13): warning C4311: 'type cast': pointer truncation from 'HANDLE' to 'DWORD'
+G:\Windows_POC\ViolentSoftware\Not_TSK\TrueSightKiller\main.cpp(85,13): warning C4302: 'type cast': truncation from 'HANDLE' to 'DWORD'
+G:\Windows_POC\ViolentSoftware\Not_TSK\TrueSightKiller\main.cpp(122,35): warning C4311: 'type cast': pointer truncation from 'HANDLE' to 'DWORD'
+G:\Windows_POC\ViolentSoftware\Not_TSK\TrueSightKiller\main.cpp(122,35): warning C4302: 'type cast': truncation from 'HANDLE' to 'DWORD'
+  Generating code
+  98 of 103 functions (95.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  TrueSightKiller.vcxproj -> G:\Windows_POC\ViolentSoftware\Not_TSK\x64\Release\TrueSightKiller.exe

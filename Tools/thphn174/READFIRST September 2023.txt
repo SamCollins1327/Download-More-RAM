@@ -1,0 +1,87 @@
+BEFORE USING THAIPHOON BURNER OR PURCHASING A LICENSE, IT IS STRONGLY 
+RECOMMENDED TO BE AWARE OF THE FOLLOWING:
+
+1. Thaiphoon Burner is not a malicious tool. It does NOT collect your
+private data, monitor your activity and install rootkits. It does NOT 
+connect to the Internet without your knowledge. To prevent Thaiphoon.exe
+from decompiling and disassembling we use a licensed software protector. 
+For this reason, some of the antivirus programs detect Thaiphoon.exe as 
+malware, infected or potentially dangerous. This is false positive!
+----------------------------------------------------------------------------
+
+2. The executable file of Thaiphoon Burner includes a manifest that requires 
+from you to have administrator privileges by default. Otherwise the program 
+cannot install its driver to access SPD EEPROM to read and write SPD data.
+----------------------------------------------------------------------------
+
+3. If Thaiphoon Burner unable to install its kernel mode driver, you
+can try uninstalling the program completely via "Help" -> "Uninstall 
+Thaiphoon Burner". After that run the program again.
+----------------------------------------------------------------------------
+
+4. When enabled, Smart App Control of Windows 11, version 22H2 may block 
+Thaiphoon Burner's driver from installing, identifying it as vulnerable.
+For this reason the program cannot read and write SPD. In this case you 
+can run the program in Windows 7/10 or import your SPD dumps extracted from 
+text reports of third-party software. To import a text SPD dump copy it to 
+the clipboard, go to "File"->"Import from Clipboard".
+
+Anyway, you can disable Windows 11 WDAC policy to let Thaiphoon Burner 
+install and run its driver via "Windows Security"->"Device Security"->
+"Memory Integrity":OFF. Then run Regedit.exe, open the key 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config]
+and set “VulnerableDriverBlocklistEnable”=dword:00000000
+Reboot your computer.
+
+More info at 
+https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-
+defender-application-control/microsoft-recommended-driver-block-rules
+----------------------------------------------------------------------------
+
+5. Before reading SPD DDR5 on Intel platforms make sure you have set the
+"SPD Write Disable" BIOS setting to "FALSE". Otherwise Thaiphoon Burner 
+cannot access the entire 1024-byte array of SPD. Decoded information may 
+appear corrupted.
+----------------------------------------------------------------------------
+
+6. WARNING! Samsung, Hynix, Elixir/Nanya, Silicon Power, Crucial (SO-DIMM),
+Patriot (SO-DIMM) and Micron Technology are used to write-protect the first 
+128 bytes of the 2-Kbit SPD EEPROM chip for all DDR2/DDR3 DRAM modules and 
+the first 384 bytes of the 4-Kbit SPD EEPROM of all DDR4 DRAM modules. This 
+limitation does not allow changing JEDEC timings, frequencies and other 
+technical parameters of the module. However, you can write one or two XMP 
+profiles to the user programmable area of SPD.
+----------------------------------------------------------------------------
+
+7. Thaiphoon Burner does not fix hardware failures of RGB-capable DDR4 DRAM 
+modules like Trident Z or Vengeance RGB. The program can restore corrupted 
+SPD data to the initial state only.
+----------------------------------------------------------------------------
+
+8. Before purchasing a license, please make sure your DRAM modules are not 
+write-protected. Otherwise you will not be paid a refund. You can use Data 
+Protection Test (EEPROM -> Data Protection Test) to ensure the SPD EEPROM 
+chip of your DDR/DDR2/DDR3/DDR4 modules is not write-protected. SPD write 
+protection status for DDR5 modules is provided in the full report. Thaiphoon 
+Burner does not have tools to clear SPD write protection.
+----------------------------------------------------------------------------
+
+9. WARNING! It is not possible to read and write SPD with Thaiphoon Burner 
+when running from within virtual environment (virtual machine)
+----------------------------------------------------------------------------
+
+10. In order to generate your license MyCommerce/Share-It! Service requires 
+from you to provide the Registration Number of your Thaiphoon Burner DEMO 
+copy. Otherwise, you will not obtain your licensing information and the 
+download link to the full version of the program.
+----------------------------------------------------------------------------
+
+11. Make sure Thaiphoon Burner is capable of reading SPD. Otherwise it is not
+recommended to purchase a license since Showshock Softnology will unable to 
+pay a refund in this case.
+----------------------------------------------------------------------------
+
+12. To be able to receive answers from support@softnology.biz, please add this
+email address to the list of permitted emails. Please take into consideration 
+that Showshock Softnology does not reply to emails registered at hotmail.com, 
+outlook.com and live.com.

@@ -1,0 +1,12 @@
+0: skci_I_MinCryptIsHashRevoked
+1: skci_MinCryptIsFileRevoked
+2: skci_I_MinCryptIsCertificateHashRevokedV2
+3: skci_MinCryptIsCertificateRevoked
+4: skci_MinCryptVerifyCertificateWithPolicy2
+5: skci_SIPolicyBlockErrorCodePerPolicy2
+
+6: ci_I_MinCryptIsHashRevoked
+7: ci_MinCryptIsFileRevoked
+8: ci_I_MinCryptIsCertificateHashRevokedV2
+9: ci_MinCryptIsCertificateRevoked
+10: ci_MinCryptVerifyCertificateWithPolicy2

@@ -1,0 +1,50 @@
+THAIPHOON BURNER Super Blaster
+version 17.4.1.2 build 0902 Final
+-----------------------------------------------------
+
+Showshock Softnology LLC
+Copyright © 2005-2023 by Vitaliy Jungle
+All Rights Reserved
+
+Customer support website:.....http://www.softnology.biz
+Discord Server:...............https://discord.gg/AWTrxcz6a
+FAQ:..........................http://softnology.biz/faq.html
+Instant support:..............support@softnology.biz
+
+This package is distributed without SPD databases.
+To download the latest SPD database, please call
+SPD Report Browser and push the Download button.
+
+Supplied files: 
+-----------------------------------------------------
+libeay32.dll and sslay32.dll are used for uploading 
+files to the Thaiphoon Burner cloud repository at 
+files.fm. If these files are missing or moved you will 
+not be able to share your screenshots, SPD dumps and 
+Ryzen OC profiles.
+
+Known Issues:
+-----------------------------------------------------
+The XMP Enhancer Editor is capable of accessing DRAM 
+controller configuration registers of Intel and AMD 
+processors. The idea is to create XMP profiles on the 
+base of the current DRAM timing settings. Unfortunately, 
+not all Intel processors are fully supported due to the 
+lack of technical documentation.
+
+INTEL PROCESSORS:
+
+* 2nd Gen "Sandy Bridge" Desktop & Mobile Intel Core – full support;
+* 3rd Gen "Ivy Bridge" Desktop & Mobile Intel Core – full support;
+* 3rd Gen Desktop & Server Intel Core and Xeon LGA2011 – full support;
+* 4th Gen Desktop & Server Intel Core and Xeon LGA2011-v2 – full support;
+* 4th Gen "Haswell" Desktop & Mobile Intel Core – tWR and tWTR timings are not read out;
+* 5th Gen Desktop & Server Intel Core and Xeon LGA2011-v3 – tRRD_L is not read. The current DRAM controller frequency is not detected and forced to be displayed at 1067 MHz.
+* 6th Gen "Skylake" Desktop & Mobile Intel CPUs with DDR4 DC mode - full support;
+* 6th Gen "Skylake" Desktop & Mobile Intel CPUs with DDR3 DC mode - tWR & tWTR are not read out;
+* 10th Gen "Ice Lake" Model U/Y CPUs - tRC, tRFC2 and tRFC4 are not read out;
+* 11th Gen "Tiger Lake" Mobile CPUs - tRC, tRFC2 and tRFC4 are not read out.
+
+AMD PROCESSORS:
+ 
+AMD Family 17h and AMD Family 19h processors – full support.

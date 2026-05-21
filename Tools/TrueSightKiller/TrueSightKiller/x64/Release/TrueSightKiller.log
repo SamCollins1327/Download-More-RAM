@@ -1,0 +1,10 @@
+﻿  main.cpp
+G:\Windows_POC\ViolentSoftware\TrueSightKiller\TrueSightKiller\main.cpp(85,13): warning C4311: 'type cast': pointer truncation from 'HANDLE' to 'DWORD'
+G:\Windows_POC\ViolentSoftware\TrueSightKiller\TrueSightKiller\main.cpp(85,13): warning C4302: 'type cast': truncation from 'HANDLE' to 'DWORD'
+G:\Windows_POC\ViolentSoftware\TrueSightKiller\TrueSightKiller\main.cpp(122,35): warning C4311: 'type cast': pointer truncation from 'HANDLE' to 'DWORD'
+G:\Windows_POC\ViolentSoftware\TrueSightKiller\TrueSightKiller\main.cpp(122,35): warning C4302: 'type cast': truncation from 'HANDLE' to 'DWORD'
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 106 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  TrueSightKiller.vcxproj -> G:\Windows_POC\ViolentSoftware\TrueSightKiller\x64\Release\TrueSightKiller.exe
