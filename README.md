@@ -8,7 +8,7 @@ The Download More RAM attack leverages a technique called memory aliasing. In th
 ## Affected Systems
 We verified this vulnerability on Windows 11 Enterprise 26H1 canary build with all security mitigations in place (secure boot enabled, HVCI enabled, credential guard enabled, test mode off). We ran our specific tesiting on a ROG Strix B450F motherboard, with a Ryzen 7 2700 CPU, and a single 8GB stick of [Corsair Vengence, ADATA XPG, G.Skill Aegis] DDR4 memory.
 
-The specific Windows 11 build is - 28000.1340
+The specific Windows 11 build is - 28000.1
 
 Use of any other build of Windows 11 will require the colleciton of new fingerprints for the functions patched in the attack. This can be done with a tool such as IDA pro, the hex values of the target funcitons listed in `patcher_updated.c` must be replaced with fresh ones from the disassembley of `skci.dll` and `ci.dll` on the target system, which may be found in the System32 directory.  
 
