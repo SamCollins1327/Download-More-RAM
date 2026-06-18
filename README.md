@@ -10,14 +10,24 @@ We verified this vulnerability on Windows 11 Enterprise 26H1 canary build with a
 
 The specific Windows 11 build is - 28000.1
 
-Use of any other build of Windows 11 will require the colleciton of new fingerprints for the functions patched in the attack. This can be done with a tool such as IDA pro, the hex values of the target funcitons listed in `patcher_updated.c` must be replaced with fresh ones from the disassembley of `skci.dll` and `ci.dll` on the target system, which may be found in the System32 directory.  
+Use of any other build of Windows 11 will require the colleciton of new fingerprints for the functions patched in the attack. This can be done with a tool such as IDA pro, the hex values of the target funcitons listed in `patcher.c` must be replaced with fresh ones from the disassembley of `skci.dll` on the target system, which may be found in the System32 directory.  
+
+## Build Instructions 
+Note - we provide pre-compiled tools for ease of replicaiton. To build tools from source follow these steps. 
+
+For `DMR_SPD_Tool`, `DMR_SPD_Tool_Headless`, `RTCore-write`, `RTCore_dump`, `RTCore_read`, `TrueSightKiller`, `TrueSigntKiller_NoDriverLoad`, and `WinPmem-custom`. These tools are provided as visual studio projects. These can be built using Visual Studio Community Edition. For each project, open the corresponding `.sln` file, navigate to the build menu and build as release.
+
+For `helper_optimised.c`, `patcher.c`, and `sig_finder.c`. These tools can be compiled using gcc with no additional options with Mingw-w64.  
+
+In the cases of `TrueSightKiller`, `TrueSigntKiller_NoDriverLoad`, and `WinPmem-custom`, all credit goes towards the original autheors as we make only light-medium edits. 
 
 ## Quickstart steps for reproducing the proof of concept 
 
-1. Navigate into the `Precompiled_Tools` directory. Set the PATH_PLACEHOLDER values in `runme.bat` to the directory of the file. All the folowing steps should be run from an elevated command prompt. 
-2. Run `DMR_SPD_TOOL.exe`, you should also have `MsIo64.sys` in the same directory as the tool. Select the appropriate DIMM slot then select `alias DIMM', you can also check the write protection first with option 2.
-3. Run `bcdedit /set removememory 8192`, then restart the PC. Verify you are running with aliased memory in task maanger or msinfo. 16GB should be installed with 8GB avaliable.
-4. Run `runme.bat`
+1. Navigate into the `Precompiled_Tools` directory. Set the path values in `runme.bat` to the directory of the file. All the folowing steps should be run from an elevated command prompt.
+2. Install primo ramdisk utility trial version and add the path to `rxprd.exe` to the PATH enviromental variable
+3. Run `DMR_SPD_TOOL.exe`, you should also have `MsIo64.sys` in the same directory as the tool. Select the appropriate DIMM slot then select `alias DIMM', you can also check the write protection first with option 2.
+4. Run `bcdedit /set removememory 8192`, then restart the PC. Verify you are running with aliased memory in task maanger or msinfo. 16GB should be installed with 8GB avaliable.
+5. Run `runme.bat`
 
 ## Steps for reproducing the proof of concept in detail 
 
@@ -30,14 +40,14 @@ Use of any other build of Windows 11 will require the colleciton of new fingerpr
 7. Scan for known values in memory. In our PoC, we target code in the secure kernel, and found that both the securekernel.exe and skci.dll images are easily found in memory. Additionally, their location in physical memory is consistent across reboots. Our memory scanner script is included in the submission. 
 8. Preparing the write primitive. Similar to the read/dump primitive of step 5, this can be carried out with different tools. For our PoC, we leverage primo ramdisk [3], which allows us to create ramdisks in memory, including in the aliased regions. On our system allocating a 3mb FAT ramdisk 28mb from the start of the aliased region will encompass the scki.dll code pages without corrupting anything. 
 9. Writing aliased memory. With the system memory aliased and primo ramdisk ready to use, the following encompasses the main body of the attack.
-    - Locate ci.dll and skci.dll in memory. On our system skci.dll was always in the same location, but ci.dll is located per boot with the ci_finder utility, which gives the MB location passed to the ramdisk utility to allocate space over the correct aliased region. 
-    - Patch ci and skci respectively 
-    - Take a snapshot of the ramdisk,
+    - On our system skci.dll was always in the same location
+    - Open ramdisk over target location
+    - Take a snapshot of the ramdisk
     - Decode it
-    - Patch relevant functions in the decoded copy, 
+    - Patch relevant functions in the decoded copy
     - Re-encode it
-    - Reupload it to the region of memory. 
-This delivers the chosen patches to the targets. We automate these steps with the script “runme.bat”. 
+    - Reupload it to the same region of memory
+This delivers the chosen patches to the target. We automate these steps with the script “runme.bat”. 
 10. Verifying the success of the PoC. Try and load a blocked vulnerable drive on the target system.. From there all BYOVD drivers are now unlocked again opening many avenues for attack. The script runme.bat will try and run the truesight driver attack and disbale Windows defender by default. 
 
 
@@ -54,6 +64,8 @@ Screenshots
 
 Tools
 - DMR_SPD_TOOL - custom tool to read/write DDR4 SPD data 
+
+- DMR_SPD_TOOL_headless - custom tool to read/write DDR4 SPD data, used in one-click version of attack with no menu 
 
 - RTCore_dump - vulnerable driver tool for dumping large memory to a file
 
@@ -75,18 +87,20 @@ Tools
 
 - Winpmem-custom - I’ve made various changes, if you want to change the read size for different dimm sizes change code on line 441 of WinPmem-custom\src\executable\winpmem.cpp
 
-- ci_finder_end2end.c - returns the MB index used in runme.bat to patch ci.dll  
-
 - helper_optimised.c - to unxor memory dump, change xor_value on line 71 if the mask is different on your machine 
 
 - OSRLOADER.exe - GUI tool for driver loading, must still disable security before bad drivers can be loaded
 
 - patcher_index.txt
 
-- patcher_updated.c - patches functions found in input file and writes to output file, which functions it patches are based off its input (see how its called in .bat file). Loaded signitures are for the Dec 9th caranry build of Windows 11. 
+- patcher.c - patches functions found in input file and writes to output file, which functions it patches are based off its input (see how its called in .bat file). Loaded signitures are for the Dec 9th caranry build of Windows 11. 
 
 - sig_finder.c: this will find instances of a given signature and suggest memory regions before the fingerprint where a ramdisk could be safely loaded. Loaded signiture is for the regular kernel ci.dll module. 
 
 - winpmem_custom.exe - pre-compiled 
+
+- CreateAndAutoLogon.ps1 - runs one-click variant of attack 
+
+- CleanUpAutoLogOnUser.ps1 - cleans up system after one click variant of attack 
 
 DemoVideo
