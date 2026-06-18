@@ -19,7 +19,7 @@ For `DMR_SPD_Tool`, `DMR_SPD_Tool_Headless`, `RTCore-write`, `RTCore_dump`, `RTC
 
 For `helper_optimised.c`, `patcher.c`, and `sig_finder.c`. These tools can be compiled using gcc with no additional options with Mingw-w64.  
 
-In the cases of `TrueSightKiller`, `TrueSigntKiller_NoDriverLoad`, and `WinPmem-custom`, all credit goes towards the original autheors as we make only light-medium edits. 
+In the cases of `TrueSightKiller`, `TrueSigntKiller_NoDriverLoad`, and `WinPmem-custom`, all credit goes towards the original authors as we make only light-medium edits. 
 
 ## Quickstart steps for reproducing the proof of concept 
 
